@@ -17,7 +17,7 @@ import { polyline } from 'leaflet'
 
 export default function Map(){
 
-    const center = [49.28594, -123.11129];
+    const center = [49.28594, -123.11129]; //waterfront
     const mainpolyline = [
         [49.28594, -123.11129],
         [49.2856364, -123.1198152],
@@ -55,18 +55,7 @@ export default function Map(){
         {name:"New Westminster Station", coord: [49.20137,-122.9127416]},
         {name:"Columbia Station", coord: [49.2048182,-122.9061329]},
     ];
-    const coqname = [
-        {name:"Sapperton Station", coord: [49.224545,-122.8895213]},
-        {name:"Braid Station", coord: [49.2331095,-122.8827758]},
-        {name:"Lougheed Town Centre Station", coord: [49.2484558,-122.8968482]},
-        {name:"Production Way–University Station", coord: [49.2534219,-122.918146]} 
-    ];
-    const surreyname = [
-        {name:"Scott Road Station", coord: [49.2044338,-122.8741266]},
-        {name:"Gateway Station", coord: [49.1991139,-122.850605]},
-        {name:"Surrey Central Station", coord: [49.1895143,-122.8478763]},
-        {name:"King George Station", coord: [49.1827755,-122.8447317]},
-    ];
+
     const coqpolyline = [
         [49.2048182,-122.9061329],
         [49.224545,-122.8895213],
@@ -74,18 +63,34 @@ export default function Map(){
         [49.2484558,-122.8968482],
         [49.2534219,-122.918146] 
     ];
+
+    const coqname = [
+        {name:"Sapperton Station", coord: [49.224545,-122.8895213]},
+        {name:"Braid Station", coord: [49.2331095,-122.8827758]},
+        {name:"Lougheed Town Centre Station", coord: [49.2484558,-122.8968482]},
+        {name:"Production Way–University Station", coord: [49.2534219,-122.918146]} 
+    ];
+
     const surreypolyline = [
         [49.2048182,-122.9061329],
         [49.2044338,-122.8741266],
         [49.1991139,-122.850605],
         [49.1895143,-122.8478763],
         [49.1827755,-122.8447317],
+    ]; 
+
+    const surreyname = [
+        {name:"Scott Road Station", coord: [49.2044338,-122.8741266]},
+        {name:"Gateway Station", coord: [49.1991139,-122.850605]},
+        {name:"Surrey Central Station", coord: [49.1895143,-122.8478763]},
+        {name:"King George Station", coord: [49.1827755,-122.8447317]},
     ];
+  
 
     const greenOption = { color: 'mediumspringgreen' };
     const redOption = { color: 'tomato' };
     const blueOption = { color: 'royalblue' };
-
+    const circleOption = { color: 'yellow' };
 
     return(
         <MapContainer className={style.map} center={center} zoom={14} scrollWheelZoom={true}>
@@ -118,11 +123,27 @@ export default function Map(){
             )}        
 
 
-            {/* <CircleMarker center={[49.28250, -123.11865]} pathOptions={redOption} radius={20}>
+            <CircleMarker center={[49.28594, -123.11129]} pathOptions={circleOption} radius={20}>
                 <Popup>
-                    You reached your destination
+                    You may transfer to <br/> Canada Line or Millennium Line.
                 </Popup>
-            </CircleMarker> */}
+            </CircleMarker>
+            <CircleMarker center={[49.2048182,-122.9061329]} pathOptions={circleOption} radius={20}>
+                <Popup>
+                    You may transfer to train to <br/> King George or Production Way-University.
+                </Popup>
+            </CircleMarker>
+            <CircleMarker center={[49.1827755,-122.8447317]} pathOptions={blueOption} radius={20}>
+                <Popup>
+                You have arrived to your destination <br/> to King George.
+                </Popup>
+            </CircleMarker>
+            <CircleMarker center={[49.2534219,-122.918146]} pathOptions={redOption} radius={20}>
+                <Popup>
+                    You have arrived to your destination <br/> to Production Way-University.
+                </Popup>
+            </CircleMarker>  
+
             <Polyline pathOptions={greenOption} positions={mainpolyline} />
             <Polyline pathOptions={redOption} positions={coqpolyline} />
             <Polyline pathOptions={blueOption} positions={surreypolyline} />
