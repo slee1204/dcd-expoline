@@ -18,10 +18,12 @@ import { polyline } from 'leaflet'
 export default function Map(){
 
     const position = [49.28594, -123.11129];
-    const polyline = [
-        [49.2868128, -123.1214528],
-        [49.2822638, -123.116657],
-        [49.2794992, 123.1135886],
+    const mainpolyline = [
+        [49.28594, -123.11129],
+        [49.2854622,-123.1222897],
+        [49.2836846,-123.123502],
+        [49.2788413,-123.1158417],
+        [49.2741866,-123.1072586],
         [49.2737316, -123.1041365],
         [49.262623, -123.0714252],
         [49.2484708, -123.0607178],
@@ -33,17 +35,24 @@ export default function Map(){
         [49.2122742, -122.9724172],
         [49.2030218, -122.9668811],
         [49.201115, -122.9226997],
+        [49.2026713, -122.914696] 
+    ];
+    const coqpolyline = [
+        [49.2026713, -122.914696],
+        [49.2095407, -122.9020789],
+        [49.2320768, -122.9067138],
+        [49.2483278, -122.9199317] 
+    ];
+    const surreypolyline = [
         [49.2026713, -122.914696],
         [49.2034284, -122.8822949],
         [49.203849, -122.8653863],
         [49.1886492, -122.8603223],
         [49.1886492, -122.8603223],
-        [49.2095407, -122.9020789],
-        [49.2320768, -122.9067138],
-        [49.2483278, -122.9199317]  
-    ]
+    ];
     const greenOption = { color: 'mediumspringgreen' };
     const redOption = { color: 'tomato' };
+    const blueOption = { color: 'royalblue' };
 
 
     return(
@@ -59,12 +68,14 @@ export default function Map(){
                 </Popup>
             </Marker>
 
-            <CircleMarker center={[49.28250, -123.11865]} pathOptions={redOption} radius={20}>
+            {/* <CircleMarker center={[49.28250, -123.11865]} pathOptions={redOption} radius={20}>
                 <Popup>
                     You reached your destination
                 </Popup>
-            </CircleMarker>
-            <Polyline pathOptions={greenOption} positions={polyline} />
+            </CircleMarker> */}
+            <Polyline pathOptions={greenOption} positions={mainpolyline} />
+            <Polyline pathOptions={redOption} positions={coqpolyline} />
+            <Polyline pathOptions={blueOption} positions={surreypolyline} />
         </MapContainer>
     )
 }
