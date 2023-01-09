@@ -81,37 +81,7 @@ export default function Map(){
         [49.1895143,-122.8478763],
         [49.1827755,-122.8447317],
     ];
-    const stations = [
-        "Waterfront Station",
-        "Burrard Station",
-        "Graville Station",
-        "Stadium-Chinatown Station",
-        "Main Street-Science World Station",
-        "Commercial-Braodway Station",
-        "Nanaimo Station",
-        "29th Ave Station",
-        "Joyce–Collingwood Station",
-        "Patterson Station",
-        "Metrotown Station",
-        "Royal Oak Station",
-        "Edmonds Station",
-        "22nd Street Station",
-        "New Westminster Station",
-        "Columbia Station",
-        "Scott Road Station",
-        "Gateway Station",
-        "Surrey Central Station",
-        "King George Station",
-        "Sapperton Station",
-        "Braid Station",
-        "Lougheed Town Centre Station",
-        "Production Way–University Station"
 
-
-
-
-
-    ]
     const greenOption = { color: 'mediumspringgreen' };
     const redOption = { color: 'tomato' };
     const blueOption = { color: 'royalblue' };
@@ -125,14 +95,27 @@ export default function Map(){
             />
 
             {mainname.map((o,i)=>
-                <Marker position={o.coord} key={i} draggable="true">
+                <Marker position={o.coord}>
                     <Popup>
                         {o.name}
                     </Popup>
                 </Marker>                        
                     )}
 
-            
+            {coqname.map((o,i)=>
+                <Marker position={o.coord}>
+                    <Popup>
+                        {o.name}
+                    </Popup>
+                </Marker>                        
+            )}
+            {surreyname.map((o,i)=>
+                <Marker position={o.coord}>
+                    <Popup>
+                        {o.name}
+                    </Popup>
+                </Marker>                        
+            )}        
 
 
             {/* <CircleMarker center={[49.28250, -123.11865]} pathOptions={redOption} radius={20}>
